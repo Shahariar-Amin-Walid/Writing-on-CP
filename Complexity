@@ -1,0 +1,99 @@
+Today I want to write about time complexity and Memory complexity.
+Time complexity is a relative thing.When we run a program we can find some information like the lines following...
+Process exited after 2.018 seconds with return value 0
+Press any key to continue . . .
+One can think that I run a program thats time complexity is 2.018.....but NO!
+here,2.018s is called execution time.time complexity represents an idea about the effectiveness of out program.It can be 
+express by BIG O NOTETION...O(something...).
+I don't wanna discuss about the basic of time complexity.Now I discuss about the time complexity of the following program..
+1+(1+2)+(1+2+3)+....(1+2+3+...+n)=?
+C++ code for the program is...
+//code_01_never_give_up...
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int main( )
+{
+	cout<<"Enter the value of n: ";
+	int n;
+	cin>>n;
+	int sum=0;
+	     for(int i=1;i<=n;i++)
+	         for(int j=1;j<=i;j++)
+	            sum+=j;
+	cout<<sum<<endl;
+	return 0;
+}
+    Here we use a nested loop.The outer loop runs n time and the inner loop runs i time,
+So the complexity would be O(n*i);
+We calculate complexity for the worst case.
+In worst case i=n;
+so the complexity = O(n^2);
+if(n==1000) n^2=10^6;
+A pc can calculate 10^8 bytes/sec.So the program runs well.But if n==100000,then n^2=10^10...It takes many time to 
+give us the output.In CP we get TLE verdict!So we have to less the complexity.If we use the formula of summation of
+1 to n natural numbers,the program will be....
+ 
+//code_02_never_give_up...
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int main( )
+{
+	cout<<"Enter the value of n: ";
+	int n;
+	cin>>n;
+	int sum=0;
+	     for(int i=1;i<=n;i++)
+	         sum+=(i+i*i)/2;
+	cout<<sum<<endl;
+	return 0;
+}
+Here we use a loop and a formula,The loop's complexity is O(n) and formula's complexity is O(1).So the toeal complexity 
+is O(n).Its good for the input 10^8.What happen if our input will be 10^12?We further get TLE verdict.So its not 
+fully effective.
+So we have to less the complexity ...
+See the following code...
+//code_03_never_give_up...
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int main( )
+{
+	cout<<"Enter the value of n: ";
+	int n;
+	cin>>n;
+    float sum;
+    float n1=n;
+    sum=(n1*(n1+1)/4) + (n1*(n1+1)*(2*n1+1)/12);
+    cout<<sum<<endl;
+	return 0;
+}
+Here we use only one formula.So our complexity is O(1).Its fully effective.
+Here we use float to avoid the precision error.
+
+Now I discuss about Memory Complexity.
+How much memory is taken by our program is memory complexity.
+If we use 4/5 variables/constants,we dont have to think about memory complexity.
+We have to be careful when we use array,string,vector,set,map etc...
+see and try to understaand the following line carefully to know the calculation of memory limit.
+Let,We use an array a[10^6];the data type of the array is integer.
+We know an integer takes 4 bytes memory.So the array takes 4x10^6 bytes memory.
+we know 1 kilobytes = 1024 bytes.
+        1 megabytes = 1024 kilobytes 
+                    = 1024X1024 Kb
+                    = 1048576 Kb
+ so the total memry needed for the array is(4X10^6)/1048576 =3.81 Mb
+If the memory limit of our program is 256 MB(most of the cases),no problem...
+Let we have to use an integer type vector of 10^8 size.
+The total memry needed for the array is(4X10^8)/1048576 =381.46 Mb>256MB
+So,we get MLE verdict!.
+Thats all for today...
+Thanks for reading my post.
+Shahariar
+Dept. of CSE
+RUET,Bangladesh.
+
