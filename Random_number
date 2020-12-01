@@ -1,0 +1,29 @@
+//Random number grenerator:
+#include<bits/stdc++.h>
+using namespace std;
+int main( )
+{
+    //The rand( ) is used to generate random numbers
+    cout<<rand( )<<endl;
+    //if we use only rand( ),[without srand( )],same number will be generate 
+    //each time.
+    srand((unsigned)time(0));
+    cout<<rand( )<<endl;
+    //dice rolling:
+    srand((unsigned)time(0));
+    cout<<(1+rand( )%6)<<endl;// generate only 1 to 6
+    //maximum number of rand( )
+    cout<<RAND_MAX<<endl;
+    //generate 10 random number between 1-100;
+    srand((unsigned)time(0));
+    for(int i=1;i<=10;i++){
+        cout<<1+rand()%100<<endl;
+    }
+    //generate 5 random number from 0 to 1
+    srand((unsigned)time(0));
+    for(int i=0;i<=5;i++){
+        cout<<(double)rand( )/(RAND_MAX*1.0)<<endl;
+    }
+    //random number either 1 or 0;
+    cout<<rand( )%2<<endl;
+}
